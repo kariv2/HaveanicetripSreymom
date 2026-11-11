@@ -1,1 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Safe Flight, My Love</title>
+  <!-- Google Fonts for Heartfelt Romantic Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body, html {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #0b1325;
+      font-family: 'Inter', sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* 1. SKY CANVAS (Clouds, Airplane, Heart Trails & Stars) */
+    #flight-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw; height: 100vh;
+      z-index: 1;
+      /* Dreamy twilight sunset sky */
+      background: linear-gradient(180deg, #0d1b2a 0%, #1b263b 35%, #415a77 65%, #778da9 85%, #d4a373 100%);
+    }
+
+    /* 2. CINEMATIC VIGNETTE */
+    #sky-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255, 230, 200, 0.05) 0%, rgba(10, 15, 25, 0.55) 100%);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* ==========================================================
+       3. FLOATING TRAVEL WISH CARD
+       ========================================================== */
+    #wish-container {
+      position: fixed;
+      left: 0; right: 0;
+      bottom: 12vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      pointer-events: none;
+      padding: 0 20px;
+    }
+
+    .wish-card {
+      width: min(92vw, 560px);
+      padding: 28px 32px;
+      text-align: center;
+      /* Frosted cloud glassmorphism */
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.06) 100%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      border-radius: 24px;
+      box-shadow: 
+        0 20px 45px rgba(10, 15, 30, 0.5),
+        0 0 35px rgba(255, 225, 180, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      animation: gentleFloat 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes gentleFloat {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-12px); }
+    }
+
+    .wish-badge {
+      display: inline-block;
+      font-family: 'Caveat', cursive;
+      font-size: 20px;
+      color: #ffd166;
+      text-shadow: 0 0 12px rgba(255, 209, 102, 0.6);
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    .wish-main {
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      font-size: clamp(23px, 3.6vw, 36px);
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.45;
+      color: #ffffff;
+      text-shadow: 
+        0 2px 14px rgba(0, 0, 0, 0.8),
+        0 0 25px rgba(255, 240, 210, 0.4);
+      margin-bottom: 8px;
+    }
+
+    .wish-sub {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(16px, 2.2vw, 22px);
+      color: #fceade;
+      opacity: 0.9;
+      letter-spacing: 0.04em;
+    }
+
+    /* Floating Heart Embers */
+    .flight-heart {
+      position: fixed;
+      font-family: monospace;
+      color: #ffcad4;
+      pointer-events: none;
+      z-index: 20;
+      text-shadow: 0 0 10px rgba(255, 202, 212, 0.8);
+      animation: floatHeart 6s ease-out forwards;
+    }
+    @keyframes floatHeart {
+      0% { opacity: 0; transform: translateY(0) scale(0.6); }
+      20% { opacity: 0.9; }
+      100% { opacity: 0; transform: translateY(-380px) scale(1.3); }
+    }
+
+    /* ==========================================================
+       4. START SCREEN (IPAD COMPLIANT)
+       ========================================================== */
+    #start-screen {
+      position: fixed !important;
+      inset: 0 !important;
+      background: rgba(10, 16, 28, 0.92) !important;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff4e6;
+      z-index: 999999 !important;
+      cursor: pointer;
+      pointer-events: auto !important;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    #start-btn {
+      width: 100%;
+      padding: 18px 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      background: linear-gradient(135deg, #ffd166, #f4a261);
+      color: #1a0f05;
+      border: 1px solid rgba(255, 240, 210, 0.85);
+      border-radius: 35px;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(244, 162, 97, 0.5);
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.15s ease;
+    }
+    #start-btn:active { transform: scale(0.96); }
+
+    .upload-container {
+      position: relative;
+      width: 100%;
+      padding: 12px 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px dashed rgba(255, 255, 255, 0.4);
+      border-radius: 25px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .upload-container input[type="file"] {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .subtitle {
+      margin-top: 14px;
+      opacity: 0.75;
+      font-size: 13.5px;
+      color: #94a3b8;
+    }
+
+    #song-player {
+      position: fixed;
+      bottom: 10px; right: 10px;
+      width: 2px; height: 2px;
+      opacity: 0.01;
+      pointer-events: none;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body onclick="startTrip()">
+
+  <!-- Media Player: Auto-detects your MP4 file -->
+  <video id="song-player" playsinline webkit-playsinline loop preload="auto"></video>
+
+  <!-- Flight Canvas (Drawing Airplane, Clouds & Heart Trail) -->
+  <canvas id="flight-canvas"></canvas>
+  <div id="sky-overlay"></div>
+
+  <!-- Romantic Safe Flight Card -->
+  <div id="wish-container">
+    <div class="wish-card">
+      <span class="wish-badge">✈️ Safe Travels, My Love</span>
+      <h1 class="wish-main">"Have a nice Trip na, enjoy it to the fullest"</h1>
+      <p class="wish-sub">fly safe, take care of yourself & make beautiful memories ♡</p>
+    </div>
+  </div>
+
+  <!-- Start Screen with Audio Auto-Detector -->
+  <div id="start-screen" onclick="startTrip()">
+    <div class="btn-group" onclick="event.stopPropagation()">
+      <button id="start-btn" onclick="startTrip()" ontouchend="startTrip()">
+        ✈️ Open Travel Wish
+      </button>
+
+      <!-- Backup button to select your MP4 from iPad if needed -->
+      <div class="upload-container">
+        <span id="upload-label">📁 or choose your .mp4 from iPad</span>
+        <input type="file" id="media-input" accept="video/*,audio/*" onchange="handleMediaUpload(this)">
+      </div>
+    </div>
+    <p class="subtitle" id="status-text">⏳ scanning your GitHub files for audio...</p>
+  </div>
+
+  <script>
+    // ==============================================================
+    // 1. AUTO-DETECT AUDIO: FINDS WHATEVER MP4 YOU UPLOAD TO GITHUB
+    // ==============================================================
+    const player = document.getElementById('song-player');
+    const statusText = document.getElementById('status-text');
+
+    async function autoDetectMedia() {
+      try {
+        const hostParts = window.location.hostname.split('.');
+        const pathParts = window.location.pathname.split('/').filter(Boolean);
+        const user = (hostParts.length > 2 && hostParts[1] === 'github') ? hostParts[0] : 'kariv2';
+        const repo = pathParts[0] || 'Ahnhem';
+
+        const res = await fetch(`https://api.github.com/repos/${user}/${repo}/contents/`);
+        if (res.ok) {
+          const files = await res.json();
+          const found = files.find(f => f.type === 'file' && /\.(mp4|mov|m4a|mp3)$/i.test(f.name));
+          if (found) {
+            player.src = found.name;
+            player.load();
+            statusText.innerText = `✓ connected to "${found.name}"`;
+            return;
+          }
+        }
+      } catch (err) {}
+
+      // Fallback filenames
+      const candidates = ['travel.mp4', 'trip.mp4', 'music.mp4', 'video.mp4'];
+      for (const name of candidates) {
+        try {
+          const check = await fetch(name, { method: 'HEAD' });
+          if (check.ok) {
+            player.src = name;
+            player.load();
+            statusText.innerText = `✓ connected to "${name}"`;
+            return;
+          }
+        } catch (e) {}
+      }
+      player.src = candidates[0];
+      statusText.innerText = "(tap button to begin)";
+    }
+    autoDetectMedia();
+
+    function handleMediaUpload(input) {
+      if (input.files && input.files[0]) {
+        const file = input.files[0];
+        player.src = URL.createObjectURL(file);
+        player.load();
+        document.getElementById('upload-label').innerText = "✓ mp4 connected!";
+        statusText.innerText = "ready! tap open travel wish now.";
+      }
+    }
+
+    // ==============================================================
+    // 2. CANVAS: DRAWING AIRPLANE, CLOUDS & HEART CONTRAIL
+    // ==============================================================
+    const canvas = document.getElementById('flight-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    let clouds = [];
+    let sparkles = [];
+    let flightTick = 0;
+    let planeX, planeY;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      planeX = width * 0.48;
+      initClouds();
+    }
+
+    function initClouds() {
+      clouds = [];
+      for (let i = 0; i < 14; i++) {
+        clouds.push({
+          x: Math.random() * width,
+          y: Math.random() * (height * 0.75),
+          scale: Math.random() * 0.8 + 0.6,
+          speed: Math.random() * 0.45 + 0.2,
+          opacity: Math.random() * 0.35 + 0.25
+        });
+      }
+
+      sparkles = [];
+      for (let i = 0; i < 25; i++) {
+        sparkles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 2.5 + 1,
+          pulse: Math.random() * Math.PI
+        });
+      }
+    }
+
+    // Draws an adorable fluffy cloud
+    function drawFluffyCloud(x, y, s, opacity) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(s, s);
+      ctx.fillStyle = `rgba(255, 245, 235, ${opacity})`;
+      ctx.beginPath();
+      ctx.arc(0, 0, 45, 0, Math.PI * 2);
+      ctx.arc(40, -18, 38, 0, Math.PI * 2);
+      ctx.arc(80, 0, 42, 0, Math.PI * 2);
+      ctx.arc(40, 15, 35, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // Draws a cute hand-sketched line-art airplane
+    function drawSketchedAirplane(x, y, angle) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+      const s = width > 800 ? 1.0 : 0.78;
+      ctx.scale(s, s);
+
+      // Airplane fuselage (clean white doodle outline)
+      ctx.strokeStyle = '#ffffff';
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+      ctx.lineWidth = 3.5;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.shadowColor = 'rgba(255, 225, 180, 0.8)';
+      ctx.shadowBlur = 18;
+
+      // Fuselage body
+      ctx.beginPath();
+      ctx.moveTo(-70, 0);
+      ctx.quadraticCurveTo(-20, -18, 60, -12); // top nose
+      ctx.quadraticCurveTo(85, -2, 85, 2);     // nose tip
+      ctx.quadraticCurveTo(60, 12, -70, 0);    // bottom
+      ctx.closePath();
+      ctx.stroke();
+      ctx.fill();
+
+      // Wings (main wing)
+      ctx.beginPath();
+      ctx.moveTo(-10, -5);
+      ctx.lineTo(-30, -55);
+      ctx.lineTo(5, -50);
+      ctx.lineTo(15, -4);
+      ctx.closePath();
+      ctx.stroke();
+      ctx.fill();
+
+      // Lower wing
+      ctx.beginPath();
+      ctx.moveTo(-10, 5);
+      ctx.lineTo(-25, 38);
+      ctx.lineTo(5, 35);
+      ctx.lineTo(15, 4);
+      ctx.closePath();
+      ctx.stroke();
+      ctx.fill();
+
+      // Tail fin
+      ctx.beginPath();
+      ctx.moveTo(-60, -2);
+      ctx.lineTo(-85, -34);
+      ctx.lineTo(-70, -32);
+      ctx.lineTo(-50, 0);
+      ctx.closePath();
+      ctx.stroke();
+      ctx.fill();
+
+      // Windows (little dark dots)
+      ctx.fillStyle = '#1b263b';
+      for (let w = 0; w < 4; w++) {
+        ctx.beginPath();
+        ctx.arc(w * 14 - 10, 0, 2.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      ctx.restore();
+    }
+
+    // Draws a dashed heart contrail trailing behind the airplane
+    function drawHeartContrail(tailX, tailY) {
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255, 235, 210, 0.75)';
+      ctx.lineWidth = 2.5;
+      ctx.setLineDash([8, 8]); // Dashed doodle line
+      ctx.shadowColor = 'rgba(255, 200, 150, 0.6)';
+      ctx.shadowBlur = 12;
+
+      ctx.beginPath();
+      ctx.moveTo(tailX, tailY);
+      // Sweeping loop into a heart behind the airplane
+      const hx = tailX - 140;
+      const hy = tailY + 15;
+      ctx.quadraticCurveTo(tailX - 60, tailY - 35, hx, hy);
+      ctx.stroke();
+
+      // Draw cute dashed heart loop
+      ctx.beginPath();
+      const hr = 28;
+      ctx.arc(hx - hr/2, hy - hr/2, hr/2, Math.PI, 0, false);
+      ctx.arc(hx + hr/2, hy - hr/2, hr/2, Math.PI, 0, false);
+      ctx.lineTo(hx, hy + hr * 0.7);
+      ctx.closePath();
+      ctx.stroke();
+
+      ctx.restore();
+    }
+
+    function drawScene() {
+      ctx.clearRect(0, 0, width, height);
+
+      // --- 1. SPARKLES IN THE SKY ---
+      sparkles.forEach(p => {
+        p.pulse += 0.03;
+        const a = Math.sin(p.pulse) * 0.4 + 0.5;
+        ctx.fillStyle = `rgba(255, 245, 210, ${a})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // --- 2. DRIFTING FLUFFY CLOUDS (PARALLAX) ---
+      clouds.forEach(c => {
+        c.x -= c.speed;
+        drawFluffyCloud(c.x, c.y, c.scale, c.opacity);
+        if (c.x < -150) {
+          c.x = width + 150;
+          c.y = Math.random() * (height * 0.75);
+        }
+      });
+
+      // --- 3. AIRPLANE FLIGHT DYNAMICS ---
+      flightTick += 0.022;
+      planeY = height * 0.32 + Math.sin(flightTick) * 22; // Gentle floating wave
+      const flightAngle = Math.cos(flightTick) * 0.06 - 0.04;
+
+      // Draw Dashed Heart Contrail behind the plane
+      drawHeartContrail(planeX - 70, planeY);
+
+      // Draw the Sketched Airplane
+      drawSketchedAirplane(planeX, planeY, flightAngle);
+
+      requestAnimationFrame(drawScene);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    drawScene();
+
+    // ==============================================================
+    // 3. START TRIP / AUDIO ENGINE
+    // ==============================================================
+    let hasStarted = false;
+
+    function startTrip() {
+      if (hasStarted) return;
+      hasStarted = true;
+
+      const screen = document.getElementById('start-screen');
+      if (screen) screen.style.display = 'none';
+
+      player.muted = false;
+      player.loop = true;
+      player.play().catch(e => console.log("Audio waiting on gesture:", e));
+
+      // Floating gentle hearts
+      setInterval(spawnFlightHeart, 450);
+    }
+
+    function spawnFlightHeart() {
+      const symbols = ['♡', '♥', '✈', '✨', '⋆｡°'];
+      const el = document.createElement('div');
+      el.className = 'flight-heart';
+      el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      
+      const size = Math.floor(14 + Math.random() * 12);
+      el.style.fontSize = `${size}px`;
+      
+      const x = Math.floor(Math.random() * (window.innerWidth - 40));
+      const y = Math.floor(window.innerHeight * 0.85);
+
+      el.style.left = `${x}px`;
+      el.style.top = `${y}px`;
+      document.body.appendChild(el);
+
+      setTimeout(() => el.remove(), 6000);
+    }
+
+    const startBtn = document.getElementById('start-btn');
+    startBtn.addEventListener('click', startTrip);
+    startBtn.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      startTrip();
+    });
+  </script>
+</body>
+</html>
