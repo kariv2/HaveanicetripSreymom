@@ -28,7 +28,6 @@
       inset: 0;
       width: 100vw; height: 100vh;
       z-index: 1;
-      /* Dreamy twilight sunset sky */
       background: linear-gradient(180deg, #0d1b2a 0%, #1b263b 35%, #415a77 65%, #778da9 85%, #d4a373 100%);
     }
 
@@ -46,21 +45,21 @@
     #wish-container {
       position: fixed;
       left: 0; right: 0;
-      bottom: 8vh;
+      bottom: 7vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       z-index: 50;
       pointer-events: none;
-      padding: 0 18px;
+      padding: 0 16px;
     }
 
     .wish-card {
-      width: min(92vw, 580px);
-      padding: 30px 34px;
+      width: min(92vw, 600px);
+      min-height: 220px;
+      padding: 28px 32px;
       text-align: center;
-      /* Frosted glass letter stationery */
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.07) 100%);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
@@ -75,30 +74,24 @@
 
     @keyframes gentleFloat {
       0% { transform: translateY(0); }
-      100% { transform: translateY(-12px); }
+      100% { transform: translateY(-10px); }
     }
 
-    /* Drawing Plane & Heart Emote Header */
+    /* Badge: ✈︎ Safe Travel na ♡ */
     .wish-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
       font-family: 'Caveat', cursive;
-      font-size: clamp(21px, 3.2vw, 25px);
+      font-size: clamp(21px, 3.2vw, 26px);
       color: #ffd166;
       text-shadow: 0 0 14px rgba(255, 209, 102, 0.7);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       letter-spacing: 0.04em;
-    }
-    .badge-icon {
-      font-size: 20px;
-      filter: drop-shadow(0 0 6px rgba(255, 209, 102, 0.8));
+      min-height: 32px;
     }
 
     /* Main Wish: "Have a nice trip, enjoy it to the fullest na" */
     .wish-main {
       font-family: 'Cormorant Garamond', 'Georgia', serif;
-      font-size: clamp(24px, 3.8vw, 36px);
+      font-size: clamp(22px, 3.6vw, 34px);
       font-weight: 600;
       font-style: italic;
       line-height: 1.4;
@@ -107,46 +100,65 @@
         0 2px 14px rgba(0, 0, 0, 0.85),
         0 0 25px rgba(255, 240, 210, 0.45);
       margin-bottom: 10px;
+      min-height: 44px;
     }
 
-    /* Care Note */
+    /* Third Phrase: Care Note */
     .wish-sub {
       font-family: 'Caveat', cursive;
-      font-size: clamp(17px, 2.4vw, 23px);
+      font-size: clamp(17px, 2.3vw, 22px);
       color: #fceade;
       opacity: 0.95;
       line-height: 1.45;
       letter-spacing: 0.03em;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      min-height: 30px;
     }
 
-    /* Divider */
     .card-divider {
       width: 60px;
       height: 1.5px;
       background: linear-gradient(90deg, transparent, rgba(255, 209, 102, 0.6), transparent);
-      margin: 0 auto 14px auto;
+      margin: 0 auto 12px auto;
+      transition: opacity 0.8s ease;
     }
 
-    /* Bottom Romantic Signature: "Aku cinta kamu, Kry Sreymom." */
+    /* Signature: "Aku cinta kamu, Kry Sreymom. ♡" */
     .wish-sign {
       font-family: 'Cormorant Garamond', 'Georgia', serif;
-      font-size: clamp(18px, 2.6vw, 24px);
+      font-size: clamp(18px, 2.5vw, 23px);
       font-weight: 500;
       letter-spacing: 0.06em;
       color: #ffcad4;
-      text-shadow: 
-        0 0 12px rgba(255, 202, 212, 0.75),
-        0 2px 8px rgba(0, 0, 0, 0.8);
+      text-shadow: 0 0 12px rgba(255, 202, 212, 0.75);
+      min-height: 28px;
     }
-    .heart-sparkle {
+
+    /* Bottom Mark: "from Virak" */
+    .wish-from {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(16px, 2.2vw, 20px);
+      color: #ffd166;
+      letter-spacing: 0.06em;
+      margin-top: 6px;
+      opacity: 0.95;
+      text-shadow: 0 0 10px rgba(255, 209, 102, 0.5);
+      min-height: 24px;
+    }
+
+    /* Romantic Blinking Typewriter Cursor */
+    .romantic-cursor {
       display: inline-block;
-      margin-left: 4px;
-      animation: heartbeat 1.5s ease infinite;
+      width: 2px;
+      height: 1em;
+      background: #ffd166;
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 0.7s infinite;
     }
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.15); }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
 
     /* Floating Ambient Hearts */
@@ -166,7 +178,7 @@
     }
 
     /* ==========================================================
-       3. START SCREEN (IPAD COMPLIANT)
+       3. START SCREEN ("PLAY" BUTTON)
        ========================================================== */
     #start-screen {
       position: fixed !important;
@@ -190,15 +202,16 @@
       gap: 14px;
       align-items: center;
       width: 100%;
-      max-width: 330px;
+      max-width: 280px;
     }
 
     #start-btn {
       width: 100%;
-      padding: 18px 24px;
+      padding: 16px 24px;
       font-family: 'Inter', sans-serif;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 500;
+      letter-spacing: 0.04em;
       background: linear-gradient(135deg, #ffd166, #f4a261);
       color: #1a0f05;
       border: 1px solid rgba(255, 240, 210, 0.85);
@@ -233,8 +246,8 @@
 
     .subtitle {
       margin-top: 14px;
-      opacity: 0.75;
-      font-size: 13.5px;
+      opacity: 0.7;
+      font-size: 13px;
       color: #94a3b8;
     }
 
@@ -257,41 +270,30 @@
   <canvas id="flight-canvas"></canvas>
   <div id="sky-overlay"></div>
 
-  <!-- Romantic Safe Flight Card -->
+  <!-- Romantic Love Letter Card -->
   <div id="wish-container">
     <div class="wish-card">
-      <!-- 1. Header with drawing plane & drawing heart -->
-      <div class="wish-badge">
-        <span class="badge-icon">✈︎</span>
-        <span>Safe Travel na</span>
-        <span class="badge-icon">♡</span>
-      </div>
-
-      <!-- 2. Main Wish -->
-      <h1 class="wish-main">"Have a nice trip, enjoy it to the fullest na"</h1>
-
-      <!-- 3. Care Note -->
-      <p class="wish-sub">fly safe, take care of yourself, your health and make beautiful memories</p>
-
-      <div class="card-divider"></div>
-
-      <!-- 4. Bottom Signature -->
-      <p class="wish-sign">
-        Aku cinta kamu, Kry Sreymom. <span class="heart-sparkle">♡</span>
-      </p>
+      <div class="wish-badge" id="type-badge"></div>
+      <h1 class="wish-main" id="type-main"></h1>
+      <p class="wish-sub" id="type-sub"></p>
+      
+      <div class="card-divider" id="type-divider" style="opacity: 0;"></div>
+      
+      <p class="wish-sign" id="type-sign"></p>
+      <p class="wish-from" id="type-from"></p>
     </div>
   </div>
 
-  <!-- Start Screen with Audio Auto-Detector -->
+  <!-- Start Screen with simple "play" button -->
   <div id="start-screen" onclick="startTrip()">
     <div class="btn-group" onclick="event.stopPropagation()">
       <button id="start-btn" onclick="startTrip()" ontouchend="startTrip()">
-        ✈️ Open Travel Wish
+        ▶ play
       </button>
 
-      <!-- Backup button to select your MP4 from iPad if needed -->
+      <!-- Backup button in case file is on iPad -->
       <div class="upload-container">
-        <span id="upload-label">📁 or choose your .mp4 from iPad</span>
+        <span id="upload-label">📁 or choose .mp4 from iPad</span>
         <input type="file" id="media-input" accept="video/*,audio/*" onchange="handleMediaUpload(this)">
       </div>
     </div>
@@ -325,7 +327,6 @@
         }
       } catch (err) {}
 
-      // Fallback filenames
       const candidates = ['travel.mp4', 'trip.mp4', 'music.mp4', 'video.mp4'];
       for (const name of candidates) {
         try {
@@ -339,7 +340,7 @@
         } catch (e) {}
       }
       player.src = candidates[0];
-      statusText.innerText = "(tap button to begin)";
+      statusText.innerText = "(tap play to begin)";
     }
     autoDetectMedia();
 
@@ -349,12 +350,64 @@
         player.src = URL.createObjectURL(file);
         player.load();
         document.getElementById('upload-label').innerText = "✓ mp4 connected!";
-        statusText.innerText = "ready! tap open travel wish now.";
+        statusText.innerText = "ready! tap play now.";
       }
     }
 
     // ==============================================================
-    // 2. CANVAS: DRAWING AIRPLANE, CLOUDS & HEART CONTRAIL
+    // 2. ROMANTIC LETTER-BY-LETTER TYPEWRITER ENGINE
+    // ==============================================================
+    function typeInto(element, text, speed) {
+      return new Promise((resolve) => {
+        let i = 0;
+        const cursor = document.createElement('span');
+        cursor.className = 'romantic-cursor';
+        element.appendChild(cursor);
+
+        const timer = setInterval(() => {
+          if (i < text.length) {
+            cursor.insertAdjacentText('beforebegin', text[i]);
+            i++;
+          } else {
+            clearInterval(timer);
+            cursor.remove();
+            resolve();
+          }
+        }, speed);
+      });
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function playRomanticLetter() {
+      // 1. Badge with drawing plane and heart
+      await typeInto(document.getElementById('type-badge'), '✈︎ Safe Travel na ♡', 45);
+      await sleep(250);
+
+      // 2. Main Wish
+      await typeInto(document.getElementById('type-main'), '"Have a nice trip, enjoy it to the fullest na"', 40);
+      await sleep(300);
+
+      // 3. Third Phrase (Care & Comeback Safely)
+      await typeInto(document.getElementById('type-sub'), 'fly safe, take care of your self, your health, make beautiful memories and comeback safely.', 32);
+      await sleep(250);
+
+      // Divider appears
+      document.getElementById('type-divider').style.opacity = '1';
+      await sleep(250);
+
+      // 4. Romantic Indonesian Dedication
+      await typeInto(document.getElementById('type-sign'), 'Aku cinta kamu, Kry Sreymom. ♡', 50);
+      await sleep(350);
+
+      // 5. From Virak
+      await typeInto(document.getElementById('type-from'), '— from Virak', 55);
+    }
+
+    // ==============================================================
+    // 3. CANVAS: DRAWING AIRPLANE, CLOUDS & HEART CONTRAIL
     // ==============================================================
     const canvas = document.getElementById('flight-canvas');
     const ctx = canvas.getContext('2d');
@@ -377,7 +430,7 @@
       for (let i = 0; i < 14; i++) {
         clouds.push({
           x: Math.random() * width,
-          y: Math.random() * (height * 0.70),
+          y: Math.random() * (height * 0.65),
           scale: Math.random() * 0.8 + 0.6,
           speed: Math.random() * 0.45 + 0.2,
           opacity: Math.random() * 0.35 + 0.25
@@ -410,7 +463,6 @@
       ctx.restore();
     }
 
-    // Hand-sketched line-art airplane
     function drawSketchedAirplane(x, y, angle) {
       ctx.save();
       ctx.translate(x, y);
@@ -426,7 +478,6 @@
       ctx.shadowColor = 'rgba(255, 225, 180, 0.8)';
       ctx.shadowBlur = 18;
 
-      // Fuselage body
       ctx.beginPath();
       ctx.moveTo(-70, 0);
       ctx.quadraticCurveTo(-20, -18, 60, -12);
@@ -477,7 +528,6 @@
       ctx.restore();
     }
 
-    // Dashed Heart Contrail
     function drawHeartContrail(tailX, tailY) {
       ctx.save();
       ctx.strokeStyle = 'rgba(255, 235, 210, 0.75)';
@@ -507,7 +557,6 @@
     function drawScene() {
       ctx.clearRect(0, 0, width, height);
 
-      // Sparkles
       sparkles.forEach(p => {
         p.pulse += 0.03;
         const a = Math.sin(p.pulse) * 0.4 + 0.5;
@@ -517,19 +566,17 @@
         ctx.fill();
       });
 
-      // Drifting clouds
       clouds.forEach(c => {
         c.x -= c.speed;
         drawFluffyCloud(c.x, c.y, c.scale, c.opacity);
         if (c.x < -150) {
           c.x = width + 150;
-          c.y = Math.random() * (height * 0.70);
+          c.y = Math.random() * (height * 0.65);
         }
       });
 
-      // Flight movement
       flightTick += 0.022;
-      planeY = height * 0.28 + Math.sin(flightTick) * 20;
+      planeY = height * 0.25 + Math.sin(flightTick) * 18;
       const flightAngle = Math.cos(flightTick) * 0.06 - 0.04;
 
       drawHeartContrail(planeX - 70, planeY);
@@ -543,7 +590,7 @@
     drawScene();
 
     // ==============================================================
-    // 3. START TRIP / AUDIO ENGINE
+    // 4. START TRIP / AUDIO ENGINE
     // ==============================================================
     let hasStarted = false;
 
@@ -556,9 +603,12 @@
 
       player.muted = false;
       player.loop = true;
-      player.play().catch(e => console.log("Audio waiting on gesture:", e));
+      player.play().catch(e => console.log("Audio play:", e));
 
       setInterval(spawnFlightHeart, 450);
+
+      // Start the romantic letter-by-letter typing
+      playRomanticLetter();
     }
 
     function spawnFlightHeart() {
