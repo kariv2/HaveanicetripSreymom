@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Safe Travel, Kry Sreymom</title>
+  <!-- Google Fonts for Romantic Love Letter Aesthetic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -76,6 +77,7 @@
       100% { transform: translateY(-10px); }
     }
 
+    /* Badge: ✈︎ Safe Travel na ♡ */
     .wish-badge {
       font-family: 'Caveat', cursive;
       font-size: clamp(21px, 3.2vw, 26px);
@@ -132,7 +134,7 @@
       min-height: 28px;
     }
 
-    /* Signoff: "— from Virak" */
+    /* Signoff: "— from someone who love you" */
     .wish-from {
       font-family: 'Caveat', cursive;
       font-size: clamp(16px, 2.2vw, 20px);
@@ -159,7 +161,7 @@
       50% { opacity: 0; }
     }
 
-    /* Dense Floating Drawing Doodles (More frequent & brighter) */
+    /* Dense Floating Drawing Doodles */
     .flight-heart {
       position: fixed;
       font-family: monospace;
@@ -384,7 +386,7 @@
       await typeInto(document.getElementById('type-badge'), '✈︎ Safe Travel na ♡', 45);
       await sleep(250);
 
-      // 2. Main Wish: "na" DELETED FROM THIS PHRASE
+      // 2. Main Wish: "Have a nice trip, enjoy it to the fullest"
       await typeInto(document.getElementById('type-main'), '"Have a nice trip, enjoy it to the fullest"', 40);
       await sleep(300);
 
@@ -396,12 +398,12 @@
       document.getElementById('type-divider').style.opacity = '1';
       await sleep(250);
 
-      // 4. Romantic Indonesian Dedication
+      // 4. Romantic Dedication
       await typeInto(document.getElementById('type-sign'), 'Aku cinta kamu, Kry Sreymom. ♡', 50);
       await sleep(350);
 
-      // 5. From Virak
-      await typeInto(document.getElementById('type-from'), '— from Virak', 55);
+      // 5. From someone who love you
+      await typeInto(document.getElementById('type-from'), '— from someone who love you', 50);
     }
 
     // ==============================================================
@@ -476,7 +478,6 @@
       ctx.shadowColor = 'rgba(255, 225, 180, 0.8)';
       ctx.shadowBlur = 18;
 
-      // Fuselage body
       ctx.beginPath();
       ctx.moveTo(-70, 0);
       ctx.quadraticCurveTo(-20, -18, 60, -12);
@@ -556,7 +557,6 @@
     function drawScene() {
       ctx.clearRect(0, 0, width, height);
 
-      // Sparkles
       sparkles.forEach(p => {
         p.pulse += 0.03;
         const a = Math.sin(p.pulse) * 0.4 + 0.5;
@@ -566,7 +566,6 @@
         ctx.fill();
       });
 
-      // Drifting clouds
       clouds.forEach(c => {
         c.x -= c.speed;
         drawFluffyCloud(c.x, c.y, c.scale, c.opacity);
@@ -576,7 +575,6 @@
         }
       });
 
-      // Flight movement
       flightTick += 0.022;
       planeY = height * 0.25 + Math.sin(flightTick) * 18;
       const flightAngle = Math.cos(flightTick) * 0.06 - 0.04;
@@ -592,7 +590,7 @@
     drawScene();
 
     // ==============================================================
-    // 4. START TRIP & MUCH MORE FREQUENT DRAWING EMOJIS
+    // 4. START TRIP / AUDIO ENGINE
     // ==============================================================
     let hasStarted = false;
 
@@ -607,13 +605,10 @@
       player.loop = true;
       player.play().catch(e => console.log("Audio play:", e));
 
-      // SPAWNS DRAWING EMOJIS MUCH MORE FREQUENTLY (Every 180ms)
       setInterval(spawnFlightHeart, 180);
-
       playRomanticLetter();
     }
 
-    // Richer pool of romantic drawing/flight doodles
     function spawnFlightHeart() {
       const symbols = ['♡', '♥', '<3', '✈︎', '✨', '⋆｡°', '˙ᵕ˙', 'ʚɞ', '☁', '✧'];
       const el = document.createElement('div');
@@ -644,4 +639,4 @@
     });
   </script>
 </body>
-</html>
+          </html>
