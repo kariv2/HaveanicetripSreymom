@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Safe Flight, My Love</title>
-  <!-- Google Fonts for Heartfelt Romantic Typography -->
+  <title>Safe Travel, Kry Sreymom</title>
+  <!-- Google Fonts for Romantic Love Letter Aesthetic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,7 +22,7 @@
       -webkit-user-select: none;
     }
 
-    /* 1. SKY CANVAS (Clouds, Airplane, Heart Trails & Stars) */
+    /* 1. SKY CANVAS (Clouds, Airplane, Heart Trail & Stars) */
     #flight-canvas {
       position: fixed;
       inset: 0;
@@ -32,7 +32,6 @@
       background: linear-gradient(180deg, #0d1b2a 0%, #1b263b 35%, #415a77 65%, #778da9 85%, #d4a373 100%);
     }
 
-    /* 2. CINEMATIC VIGNETTE */
     #sky-overlay {
       position: fixed;
       inset: 0;
@@ -42,35 +41,35 @@
     }
 
     /* ==========================================================
-       3. FLOATING TRAVEL WISH CARD
+       2. ROMANTIC LOVE LETTER CARD (FLOATING IN CLOUDS)
        ========================================================== */
     #wish-container {
       position: fixed;
       left: 0; right: 0;
-      bottom: 12vh;
+      bottom: 8vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       z-index: 50;
       pointer-events: none;
-      padding: 0 20px;
+      padding: 0 18px;
     }
 
     .wish-card {
-      width: min(92vw, 560px);
-      padding: 28px 32px;
+      width: min(92vw, 580px);
+      padding: 30px 34px;
       text-align: center;
-      /* Frosted cloud glassmorphism */
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.06) 100%);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1.5px solid rgba(255, 255, 255, 0.35);
-      border-radius: 24px;
+      /* Frosted glass letter stationery */
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.07) 100%);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1.5px solid rgba(255, 255, 255, 0.38);
+      border-radius: 26px;
       box-shadow: 
-        0 20px 45px rgba(10, 15, 30, 0.5),
+        0 24px 50px rgba(10, 15, 30, 0.55),
         0 0 35px rgba(255, 225, 180, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        inset 0 1px 0 rgba(255, 255, 255, 0.45);
       animation: gentleFloat 5s ease-in-out infinite alternate;
     }
 
@@ -79,38 +78,78 @@
       100% { transform: translateY(-12px); }
     }
 
+    /* Drawing Plane & Heart Emote Header */
     .wish-badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       font-family: 'Caveat', cursive;
-      font-size: 20px;
+      font-size: clamp(21px, 3.2vw, 25px);
       color: #ffd166;
-      text-shadow: 0 0 12px rgba(255, 209, 102, 0.6);
-      margin-bottom: 8px;
-      letter-spacing: 0.05em;
-    }
-
-    .wish-main {
-      font-family: 'Cormorant Garamond', 'Georgia', serif;
-      font-size: clamp(23px, 3.6vw, 36px);
-      font-weight: 500;
-      font-style: italic;
-      line-height: 1.45;
-      color: #ffffff;
-      text-shadow: 
-        0 2px 14px rgba(0, 0, 0, 0.8),
-        0 0 25px rgba(255, 240, 210, 0.4);
-      margin-bottom: 8px;
-    }
-
-    .wish-sub {
-      font-family: 'Caveat', cursive;
-      font-size: clamp(16px, 2.2vw, 22px);
-      color: #fceade;
-      opacity: 0.9;
+      text-shadow: 0 0 14px rgba(255, 209, 102, 0.7);
+      margin-bottom: 10px;
       letter-spacing: 0.04em;
     }
+    .badge-icon {
+      font-size: 20px;
+      filter: drop-shadow(0 0 6px rgba(255, 209, 102, 0.8));
+    }
 
-    /* Floating Heart Embers */
+    /* Main Wish: "Have a nice trip, enjoy it to the fullest na" */
+    .wish-main {
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      font-size: clamp(24px, 3.8vw, 36px);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.4;
+      color: #ffffff;
+      text-shadow: 
+        0 2px 14px rgba(0, 0, 0, 0.85),
+        0 0 25px rgba(255, 240, 210, 0.45);
+      margin-bottom: 10px;
+    }
+
+    /* Care Note */
+    .wish-sub {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(17px, 2.4vw, 23px);
+      color: #fceade;
+      opacity: 0.95;
+      line-height: 1.45;
+      letter-spacing: 0.03em;
+      margin-bottom: 16px;
+    }
+
+    /* Divider */
+    .card-divider {
+      width: 60px;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, rgba(255, 209, 102, 0.6), transparent);
+      margin: 0 auto 14px auto;
+    }
+
+    /* Bottom Romantic Signature: "Aku cinta kamu, Kry Sreymom." */
+    .wish-sign {
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      font-size: clamp(18px, 2.6vw, 24px);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: #ffcad4;
+      text-shadow: 
+        0 0 12px rgba(255, 202, 212, 0.75),
+        0 2px 8px rgba(0, 0, 0, 0.8);
+    }
+    .heart-sparkle {
+      display: inline-block;
+      margin-left: 4px;
+      animation: heartbeat 1.5s ease infinite;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    /* Floating Ambient Hearts */
     .flight-heart {
       position: fixed;
       font-family: monospace;
@@ -127,12 +166,12 @@
     }
 
     /* ==========================================================
-       4. START SCREEN (IPAD COMPLIANT)
+       3. START SCREEN (IPAD COMPLIANT)
        ========================================================== */
     #start-screen {
       position: fixed !important;
       inset: 0 !important;
-      background: rgba(10, 16, 28, 0.92) !important;
+      background: rgba(10, 16, 28, 0.94) !important;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       display: flex;
@@ -151,7 +190,7 @@
       gap: 14px;
       align-items: center;
       width: 100%;
-      max-width: 320px;
+      max-width: 330px;
     }
 
     #start-btn {
@@ -221,9 +260,25 @@
   <!-- Romantic Safe Flight Card -->
   <div id="wish-container">
     <div class="wish-card">
-      <span class="wish-badge">✈️ Safe Travels, My Love</span>
-      <h1 class="wish-main">"Have a nice Trip na, enjoy it to the fullest"</h1>
-      <p class="wish-sub">fly safe, take care of yourself & make beautiful memories ♡</p>
+      <!-- 1. Header with drawing plane & drawing heart -->
+      <div class="wish-badge">
+        <span class="badge-icon">✈︎</span>
+        <span>Safe Travel na</span>
+        <span class="badge-icon">♡</span>
+      </div>
+
+      <!-- 2. Main Wish -->
+      <h1 class="wish-main">"Have a nice trip, enjoy it to the fullest na"</h1>
+
+      <!-- 3. Care Note -->
+      <p class="wish-sub">fly safe, take care of yourself, your health and make beautiful memories</p>
+
+      <div class="card-divider"></div>
+
+      <!-- 4. Bottom Signature -->
+      <p class="wish-sign">
+        Aku cinta kamu, Kry Sreymom. <span class="heart-sparkle">♡</span>
+      </p>
     </div>
   </div>
 
@@ -322,7 +377,7 @@
       for (let i = 0; i < 14; i++) {
         clouds.push({
           x: Math.random() * width,
-          y: Math.random() * (height * 0.75),
+          y: Math.random() * (height * 0.70),
           scale: Math.random() * 0.8 + 0.6,
           speed: Math.random() * 0.45 + 0.2,
           opacity: Math.random() * 0.35 + 0.25
@@ -340,7 +395,6 @@
       }
     }
 
-    // Draws an adorable fluffy cloud
     function drawFluffyCloud(x, y, s, opacity) {
       ctx.save();
       ctx.translate(x, y);
@@ -356,7 +410,7 @@
       ctx.restore();
     }
 
-    // Draws a cute hand-sketched line-art airplane
+    // Hand-sketched line-art airplane
     function drawSketchedAirplane(x, y, angle) {
       ctx.save();
       ctx.translate(x, y);
@@ -364,7 +418,6 @@
       const s = width > 800 ? 1.0 : 0.78;
       ctx.scale(s, s);
 
-      // Airplane fuselage (clean white doodle outline)
       ctx.strokeStyle = '#ffffff';
       ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
       ctx.lineWidth = 3.5;
@@ -376,14 +429,14 @@
       // Fuselage body
       ctx.beginPath();
       ctx.moveTo(-70, 0);
-      ctx.quadraticCurveTo(-20, -18, 60, -12); // top nose
-      ctx.quadraticCurveTo(85, -2, 85, 2);     // nose tip
-      ctx.quadraticCurveTo(60, 12, -70, 0);    // bottom
+      ctx.quadraticCurveTo(-20, -18, 60, -12);
+      ctx.quadraticCurveTo(85, -2, 85, 2);
+      ctx.quadraticCurveTo(60, 12, -70, 0);
       ctx.closePath();
       ctx.stroke();
       ctx.fill();
 
-      // Wings (main wing)
+      // Top wing
       ctx.beginPath();
       ctx.moveTo(-10, -5);
       ctx.lineTo(-30, -55);
@@ -403,7 +456,7 @@
       ctx.stroke();
       ctx.fill();
 
-      // Tail fin
+      // Tail
       ctx.beginPath();
       ctx.moveTo(-60, -2);
       ctx.lineTo(-85, -34);
@@ -413,7 +466,7 @@
       ctx.stroke();
       ctx.fill();
 
-      // Windows (little dark dots)
+      // Windows
       ctx.fillStyle = '#1b263b';
       for (let w = 0; w < 4; w++) {
         ctx.beginPath();
@@ -424,24 +477,22 @@
       ctx.restore();
     }
 
-    // Draws a dashed heart contrail trailing behind the airplane
+    // Dashed Heart Contrail
     function drawHeartContrail(tailX, tailY) {
       ctx.save();
       ctx.strokeStyle = 'rgba(255, 235, 210, 0.75)';
       ctx.lineWidth = 2.5;
-      ctx.setLineDash([8, 8]); // Dashed doodle line
+      ctx.setLineDash([8, 8]);
       ctx.shadowColor = 'rgba(255, 200, 150, 0.6)';
       ctx.shadowBlur = 12;
 
       ctx.beginPath();
       ctx.moveTo(tailX, tailY);
-      // Sweeping loop into a heart behind the airplane
       const hx = tailX - 140;
       const hy = tailY + 15;
       ctx.quadraticCurveTo(tailX - 60, tailY - 35, hx, hy);
       ctx.stroke();
 
-      // Draw cute dashed heart loop
       ctx.beginPath();
       const hr = 28;
       ctx.arc(hx - hr/2, hy - hr/2, hr/2, Math.PI, 0, false);
@@ -456,7 +507,7 @@
     function drawScene() {
       ctx.clearRect(0, 0, width, height);
 
-      // --- 1. SPARKLES IN THE SKY ---
+      // Sparkles
       sparkles.forEach(p => {
         p.pulse += 0.03;
         const a = Math.sin(p.pulse) * 0.4 + 0.5;
@@ -466,25 +517,22 @@
         ctx.fill();
       });
 
-      // --- 2. DRIFTING FLUFFY CLOUDS (PARALLAX) ---
+      // Drifting clouds
       clouds.forEach(c => {
         c.x -= c.speed;
         drawFluffyCloud(c.x, c.y, c.scale, c.opacity);
         if (c.x < -150) {
           c.x = width + 150;
-          c.y = Math.random() * (height * 0.75);
+          c.y = Math.random() * (height * 0.70);
         }
       });
 
-      // --- 3. AIRPLANE FLIGHT DYNAMICS ---
+      // Flight movement
       flightTick += 0.022;
-      planeY = height * 0.32 + Math.sin(flightTick) * 22; // Gentle floating wave
+      planeY = height * 0.28 + Math.sin(flightTick) * 20;
       const flightAngle = Math.cos(flightTick) * 0.06 - 0.04;
 
-      // Draw Dashed Heart Contrail behind the plane
       drawHeartContrail(planeX - 70, planeY);
-
-      // Draw the Sketched Airplane
       drawSketchedAirplane(planeX, planeY, flightAngle);
 
       requestAnimationFrame(drawScene);
@@ -510,12 +558,11 @@
       player.loop = true;
       player.play().catch(e => console.log("Audio waiting on gesture:", e));
 
-      // Floating gentle hearts
       setInterval(spawnFlightHeart, 450);
     }
 
     function spawnFlightHeart() {
-      const symbols = ['♡', '♥', '✈', '✨', '⋆｡°'];
+      const symbols = ['♡', '♥', '✈︎', '✨', '⋆｡°'];
       const el = document.createElement('div');
       el.className = 'flight-heart';
       el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
